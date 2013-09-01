@@ -1,0 +1,17 @@
+{
+  "name": "drib",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "request": "~2.27.0",
+    "underscore": "~1.5.1",
+    "function-rate-limit": "0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD"
+}
