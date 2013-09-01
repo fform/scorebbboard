@@ -34,4 +34,4 @@ setTimeout(function(){
 
 }, 20 * 60 * 1000);
 
-drib.refreshShots();
+//drib.refreshShots();

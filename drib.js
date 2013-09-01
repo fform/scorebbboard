@@ -46,7 +46,7 @@ exports.refreshList = function( list ){
 
 exports.refreshShots = function(){
 	console.log('Run shot refresh %s', new Date());
-	connection.query("SELECT * FROM `shots` ORDER BY created_at desc LIMIT 150", function(err, result){
+	connection.query("SELECT * FROM `shots` ORDER BY created_at desc LIMIT 250", function(err, result){
 		var fn = rateLimit(30, 60*1000, function (shot) {
 			console.log('update shot %s %s', shot.title, new Date());
 			request.get('http://api.dribbble.com/shots/' + shot.id , function(err, res){
