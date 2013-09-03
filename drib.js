@@ -52,17 +52,21 @@ exports.refreshShots = function(){
 			request.get('http://api.dribbble.com/shots/' + shot.id , function(err, res){
 
 				var thisShot = JSON.parse(res.body);
-				connection.query("INSERT INTO `shots_status` SET ?", {
-					'id':thisShot.id,
-					'player_likes': thisShot.player.likes_received_count,
-					'player_followers': thisShot.player.followers_count,
-					'player_following': thisShot.player.following_count,
-					'likes': thisShot.likes_count,
-					'views': thisShot.views_count,
-					'comments': thisShot.comments_count,
-					'created_at': new Date(),
-				}, function(err,result){
-				});
+				try{
+					connection.query("INSERT INTO `shots_status` SET ?", {
+						'id':thisShot.id,
+						'player_likes': thisShot.player.likes_received_count,
+						'player_followers': thisShot.player.followers_count,
+						'player_following': thisShot.player.following_count,
+						'likes': thisShot.likes_count,
+						'views': thisShot.views_count,
+						'comments': thisShot.comments_count,
+						'created_at': new Date(),
+					}, function(err,result){
+					});
+				}catch(e){
+					console.log("Undefined response ", thisShot);
+				}
 			});
 		});
 		_(result).each(function(row){
